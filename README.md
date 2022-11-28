@@ -23,7 +23,7 @@ matrix = Matrix(rows, columns)
 | - | - | - |
 | fillCellsByZero | Fills all matrix cells with zeros. | matrix.fillZeroesAndOnes() |
 | fillCellsByRandomNumbers | Fills matrix cells with random numbers from a range. It takes one argument as input - a range (tuple).  | matrix.fillZeroesAndOnes((a, b)) |
-| addTriangle | Adds triangle to the center of the matrix. | matrix.addTriangle() |
+| addTriangle | Adds a triangle of zeros to the center of the matrix. | matrix.addTriangle() |
 | fillCellsByZeroesAndOnes | Fills everything above the main diagonal with zeros, the rest with ones. | matrix.fillCellsByZeroesAndOnes() |
 | fillCellsByNaturalNumbersWithLadder | Fills the matrix with natural numbers with a ladder. | matrix.fillCellsByNaturalNumbersWithLadder() |
 | display | Matrix display. | matrix.display() |
