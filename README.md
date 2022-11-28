@@ -26,4 +26,5 @@ matrix = Matrix(rows, columns)
 | addTriangle | Adds a triangle of zeros to the center of the matrix. | matrix.addTriangle() |
 | fillCellsByZeroesAndOnes | Fills everything above the main diagonal with zeros, the rest with ones. | matrix.fillCellsByZeroesAndOnes() |
 | fillCellsByNaturalNumbersWithLadder | Fills the matrix with natural numbers with a ladder. | matrix.fillCellsByNaturalNumbersWithLadder() |
+| fillCellsInSpiral | Fills the matrix with natural numbers in a spiral. | matrix.fillCellsInSpiral() |
 | display | Matrix display. | matrix.display() |
