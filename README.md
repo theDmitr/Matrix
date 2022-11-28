@@ -6,14 +6,14 @@ This library will help you work with matrices, fill them in and perform operatio
 
 To work with the matrix, you need to import the module, this can be done using:
 
-```sh
+```python
 from matrix import Matrix
 ```
 
 To create a matrix object, you need to initialize it, call the constructor from the "Matrix" class.
 The constructor method takes 2 required arguments — the number of rows and columns of the created matrix.
 
-```sh
+```python
 matrix = Matrix(rows, columns)
 ```
 
