@@ -1,10 +1,16 @@
 from random import randint
+from statistics import mean
 
 class Matrix:
     matrix = []
     def __init__(self, rows, columns):
         self.rows, self.columns = rows, columns
         self.fillCellsByZero()
+    def fillCellsByList(self, matrix):
+        for i in range(len(matrix)):
+            if len(matrix[0]) != len(matrix[i]): return False
+        self.matrix = matrix
+        return True
     def fillCellsByZero(self):
         self.matrix = []
         for i in range(self.rows):
@@ -17,13 +23,10 @@ class Matrix:
             line = []
             for j in range(self.columns): line.append(randint(rangeNumbers[0], rangeNumbers[1]))
             self.matrix.append(line)
-    def addTriangle(self):
-        for i in range(self.rows): 
-            for j in range(self.columns - 1, self.columns - i, -1): self.matrix[i - 1][j - 1] = 0
     def fillCellsByZeroesAndOnes(self):
         self.fillCellsByZero()
         for i in range(self.rows):
-            for j in range(i + 1): self.matrix[i][j] = 1
+            for j in range(i + 1, self.columns): self.matrix[i][j] = 1
     def fillCellsByNaturalNumbersWithLadder(self):
         for i in range(self.rows):
             for j in range(self.columns): self.matrix[i][j] = j + i + 1
@@ -53,6 +56,47 @@ class Matrix:
             elif left: x -= 1
             elif down: y += 1
             elif up: y -= 1
-            
+    def addTriangle(self):
+        for i in range(self.rows): 
+            for j in range(self.columns - 1, self.columns - i, -1): self.matrix[i - 1][j - 1] = 0
+    def swapRowsAndColumns(self):
+        newMatrix = [[] for i in range(self.columns)]
+        for i in range(self.rows):
+            for j in range(self.columns): newMatrix[j].append(self.matrix[i][j])
+        self.matrix = newMatrix
+    def getSumAllCells(self):
+        return sum([sum(i) for i in self.matrix])
+    def getLowerAndUpperCellsOverMain(self):
+        upper, lower = [], []
+        for i in range(self.rows):
+            for j in range(i + 1, self.columns): upper.append(self.matrix[i][j])
+            for k in range(0, i): lower.append(self.matrix[i][k])
+        return {"lower": lower, "upper": upper}
+    def getAverageOverMain(self):
+        cells = self.getLowerAndUpperCellsOverMain()
+        return {"lower": mean(cells["lower"]), "upper": mean(cells["upper"])}
     def display(self):
         for i in self.matrix: print(i)
+
+class Operations:
+    def sumOfTwoMatrices(matrix_1, matrix_2):
+        if not (matrix_1.rows == matrix_2.rows and matrix_1.columns == matrix_2.columns): return None
+        resultMatrix = Matrix(matrix_1.rows, matrix_1.columns)
+        for i in range(matrix_1.rows):
+            for j in range(matrix_2.columns): 
+                resultMatrix.matrix[i][j] = matrix_1.matrix[i][j] + matrix_2.matrix[i][j]
+        return resultMatrix
+    def differenceOfTwoMatrices(matrix_1, matrix_2):
+        if not (matrix_1.rows == matrix_2.rows and matrix_1.columns == matrix_2.columns): return None
+        resultMatrix = Matrix(matrix_1.rows, matrix_1.columns)
+        for i in range(matrix_1.rows):
+            for j in range(matrix_2.columns): 
+                resultMatrix.matrix[i][j] = matrix_1.matrix[i][j] - matrix_2.matrix[i][j]
+        return resultMatrix
+    def multiOfTwoMatrices(matrix_1, matrix_2):
+        if not matrix_1.columns == matrix_2.rows: return None
+        resultMatrix = Matrix(matrix_1.rows, matrix_2.columns)
+        for i in range(matrix_1.rows):
+            for j in range(matrix_2.columns):
+                resultMatrix.matrix[i][j] = sum([matrix_1.matrix[i][k] * matrix_2.matrix[k][j] for k in range(matrix_2.rows)])
+        return resultMatrix
