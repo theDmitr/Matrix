@@ -21,7 +21,7 @@ matrix = Matrix(rows, columns)
 
 | Method | Assignment | Use |
 | - | - | - |
-| fillCellsByList | Fills in a two-dimensional array equivalent to the array passed in the argument. | matrix.fillCellsByList(array) |
+| fillCellsByList | Fills in a two-dimensional array equivalent to the array passed in the argument. If the dimensions match and the matrix is full, then the method will return True, otherwise False. | matrix.fillCellsByList(array) |
 | fillCellsByZero | Fills all matrix cells with zeros. | matrix.fillZeroesAndOnes() |
 | fillCellsByRandomNumbers | Fills matrix cells with random numbers from a range. It takes one argument as input - a range (tuple).  | matrix.fillZeroesAndOnes((a, b)) |
 | fillCellsByZeroesAndOnes | Fills everything above the main diagonal with zeros, the rest with ones. | matrix.fillCellsByZeroesAndOnes() |
