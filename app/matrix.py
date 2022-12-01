@@ -64,6 +64,11 @@ class Matrix:
         for i in range(self.rows):
             for j in range(self.columns): newMatrix[j].append(self.matrix[i][j])
         self.matrix = newMatrix
+    def removeRowAndColumnByMax(self):
+    	idx = self.getIndexMaxElement()
+    	self.matrix.pop(idx["row"])
+    	for i in self.matrix:
+    		i.pop(idx["column"])
     def getSumAllCells(self):
         return sum([sum(i) for i in self.matrix])
     def getLowerAndUpperCellsOverMain(self):
@@ -75,6 +80,15 @@ class Matrix:
     def getAverageOverMain(self):
         cells = self.getLowerAndUpperCellsOverMain()
         return {"lower": mean(cells["lower"]), "upper": mean(cells["upper"])}
+    def getMaxElement(self):
+    	return max([max(i) for i in self.matrix])
+    def getIndexMaxElement(self):
+    	maximum = self.getMaxElement()
+    	for line, i in enumerate(self.matrix):
+    		try:
+    			return {"row": line, "column": i.index(maximum)}
+    		except: continue
+    		
     def display(self):
         for i in self.matrix: print(i)
 
